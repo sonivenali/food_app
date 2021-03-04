@@ -1,9 +1,12 @@
 import 'dart:convert';
 
-import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:http/http.dart' as http;
+import 'dart:io';
+import 'package:camera/camera.dart';
 
+import 'package:flutter/material.dart';
+//import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:http/http.dart' as http;
+import 'package:image_picker/image_picker.dart';
 import 'HomeScreen.dart';
 
 class RegistrationScreen extends StatefulWidget {
@@ -18,6 +21,8 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
   final passwordController = TextEditingController();
   final confirmpasswordController = TextEditingController();
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
+  File _image;
+  bool imageis = false;
 
   @override
   Widget build(BuildContext context) {
@@ -45,10 +50,30 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                     child: CircleAvatar(
                       backgroundColor: Colors.grey,
                       radius: 50,
-                      child: Icon(
-                        Icons.person,
-                        color: Colors.white,
-                        size: 50,
+                      backgroundImage: imageis?Image.file(
+                        _image,
+                        fit: BoxFit.cover,
+                      ).image:null,
+                      child: Stack(
+                        children: [
+                          imageis?Text(''):  Center(
+                            child: Icon(
+                              Icons.person,
+                              color: Colors.white,
+                              size: 50,
+                            ),
+                          ),
+                      GestureDetector(
+                        onTap: _openCamera,
+                        child: Align(
+                          alignment: Alignment(0.8,0.9),
+                          child: Icon(
+                            Icons.camera_enhance,
+                            color: Colors.white,
+                          ),
+                        ),
+                      )
+                        ],
                       ),
                     ),
                   ),
@@ -235,11 +260,36 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
     if (response.statusCode == 201) {
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => HomeScreen()),
+        MaterialPageRoute(builder: (context) => HomeScreen("abc")),
       );
     } else {
       _scaffoldKey.currentState
           .showSnackBar(new SnackBar(content: new Text("Invalid credentials")));
+    }
+  }
+
+  _openCamera() async{
+    print("clicked on open camera ");
+    await getImage();
+
+    }
+  Future getImage() async {
+    final picker = ImagePicker();
+    try{
+      final pickedFile = await picker.getImage(source: ImageSource.gallery);
+
+      setState(() {
+        if (pickedFile != null) {
+          imageis = true;
+          print("picked pife successfull");
+          _image = File(pickedFile.path);
+        } else {
+          print('No image selected.');
+        }
+      });
+    }
+    catch(exp){
+      print(exp);
     }
   }
 }

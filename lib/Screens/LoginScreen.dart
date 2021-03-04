@@ -147,9 +147,10 @@ class _LoginScreenState extends State<LoginScreen> {
     if (response.statusCode == 200) {
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => HomeScreen()),
+        MaterialPageRoute(builder: (context) => HomeScreen(usernameController.text)),
       );
-    }else{
+    }
+    else{
       _scaffoldKey.currentState
           .showSnackBar(new SnackBar(content: new Text("Invalid credentials")));
     }
