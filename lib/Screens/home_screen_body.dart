@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:foodapp/models/home_data.dart';
 import 'package:foodapp/services/services.dart';
 
+
 class HomeBody extends StatefulWidget {
   @override
   _HomeBodyState createState() => _HomeBodyState();
@@ -65,6 +66,7 @@ class _HomeBodyState extends State<HomeBody> {
           height: 250,
           padding: EdgeInsets.only(left: 16),
           child: ListView.builder(
+            itemCount: data.recommended.length,
             shrinkWrap: true,
             scrollDirection: Axis.horizontal,
             itemBuilder: (context, index) {
@@ -81,12 +83,28 @@ class _HomeBodyState extends State<HomeBody> {
                             data.recommended[index].image,
                             fit: BoxFit.cover,
                           )),
+                    ),
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(16),
+                      child: Container(
+                        color: Color.fromRGBO(0, 0, 0, 0.4),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 8, left: 8),
+                      child: Text(
+                        data.recommended[index].name,
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 18,
+                          fontWeight: FontWeight.w400
+                        ),
+                      ),
                     )
                   ],
                 ),
               );
             },
-            itemCount: data.recommended.length,
           ),
         )
       ],
