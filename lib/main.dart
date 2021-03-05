@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'Screens/HomeScreen.dart';
-import 'Screens/LoginScreen.dart';
+import 'Screens/home_screen.dart';
+import 'Screens/login_screen.dart';
 
 
 void main() {

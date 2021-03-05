@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
+import 'home_screen_body.dart';
+
 class HomeScreen extends StatefulWidget {
   final String
       comingemail; // cating the vlaue that has been pass by login screen
@@ -27,7 +29,7 @@ class _HomeScreenState extends State<HomeScreen> {
             automaticallyImplyLeading: false,
             centerTitle: false,
             title: Padding(
-              padding: const EdgeInsets.only(left: 16,top: 14),
+              padding: const EdgeInsets.only(left: 16, top: 14),
               child: Text(
                 "Welcome!",
                 style: TextStyle(
@@ -47,20 +49,6 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               )
             ]),
-        body: Padding(
-          padding: const EdgeInsets.only(left: 24, right: 24, top: 30),
-          child: TextField(cursorColor: Colors.grey,
-            decoration: InputDecoration(prefixIcon: Icon(Icons.search,color: Colors.black,),
-
-              hintText: "Search food",
-              contentPadding: EdgeInsets.only(top: 16, bottom: 16, left: 8),
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.all(
-                  Radius.circular(60),
-                ),
-              ),
-            ),
-          ),
-        ));
+        body: HomeBody());
   }
 }

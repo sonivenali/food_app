@@ -6,15 +6,11 @@ import 'package:http/http.dart' as http;
 
 
 class Services{
-  Future<List<HomeData>> getFood() async {
+  Future<HomeData> getFood() async {
     final response = await http.get(
-      'https://api.mocki.io/v1/fc788dfa',
+      'https://api.mocki.io/v1/56433485',
     );
     final data = json.decode(response.body);
-    List<HomeData> items = [];
-    for (Map<String, dynamic> u in data) {
-      items.add(HomeData.fromJson(u));
-    }
-    return items;
+    return HomeData.fromJson(data);
   }
 }

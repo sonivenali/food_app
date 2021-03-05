@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 //import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:http/http.dart' as http;
 import 'package:image_picker/image_picker.dart';
-import 'HomeScreen.dart';
+import 'home_screen.dart';
 
 class RegistrationScreen extends StatefulWidget {
   @override

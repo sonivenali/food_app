@@ -5,8 +5,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:http/http.dart' as http;
 
-import 'HomeScreen.dart';
-import 'RegistrationScreen.dart';
+import 'home_screen.dart';
+import 'registration_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   @override
