@@ -50,6 +50,55 @@ class _DetailScreenState extends State<DetailScreen> {
                   fontWeight: FontWeight.w600),
             ),
           ),
+          Positioned(
+            top: 372,
+            left: 28,
+            child: Card(
+              elevation: 8,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(24),
+              ),
+              child: Padding(
+                padding: const EdgeInsets.only(
+                    top: 8, left: 20, bottom: 8, right: 20),
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    CircleAvatar(
+                      backgroundImage: Image.network(
+                              "https://images.unsplash.com/photo-1554151228-14d9def656e4?ixid=MXwxMjA3fDB8MHxzZWFyY2h8NHx8aHVtYW58ZW58MHx8MHw%3D&ixlib=rb-1.2.1&w=1000&q=80")
+                          .image,
+                      radius: 16,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 16, right: 4),
+                      child: Text(
+                        widget.data.rating,
+                        style: TextStyle(
+                            fontSize: 18, fontWeight: FontWeight.w700),
+                      ),
+                    ),
+                    Icon(
+                      Icons.star,
+                      color: Colors.orange,
+                    )
+                  ],
+                ),
+              ),
+            ),
+          ),
+          Positioned(
+              top: 372,
+              right: 28,
+              child: FloatingActionButton(
+                elevation: 8,
+                onPressed: () {},
+                backgroundColor: Colors.red[300],
+                child: Icon(
+                  Icons.favorite,
+                  color: Colors.white,
+                ),
+              ))
         ],
       ),
     );
