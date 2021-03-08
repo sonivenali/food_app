@@ -14,15 +14,91 @@ class _DetailScreenState extends State<DetailScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: [
-          buildTopSection(context),
-          Padding(
-            padding: const EdgeInsets.only(left: 40),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            buildTopSection(context),
+            buildAboutHeading(),
+            buildAbout(),
+            buildIngredients(),
+            buildIngredientsList(),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Padding buildIngredientsList() {
+    return Padding(
+            padding: const EdgeInsets.only(left: 20, top: 8,right: 20),
+            child: Row(
+              children: [
+                Expanded(flex: 1,
+                  child: Padding(
+                    padding: const EdgeInsets.all(4),
+                    child: ClipRRect(
+                        borderRadius: BorderRadius.circular(12),
+                        child: Image.network(
+                          widget.data.ingredients1,
+                          height: 65,
+                          width: 85,
+                          fit: BoxFit.cover,
+                        )),
+                  ),
+                ),
+                Expanded(flex: 1,
+                  child: Padding(
+                    padding: const EdgeInsets.all(4),
+                    child: ClipRRect(
+                        borderRadius: BorderRadius.circular(12),
+                        child: Image.network(
+                          widget.data.ingredients2,
+                          height: 65,
+                          width: 85,
+                          fit: BoxFit.cover,
+                        )),
+                  ),
+                ),
+                Expanded(flex: 1,
+                  child: Padding(
+                    padding: const EdgeInsets.all(4),
+                    child: ClipRRect(
+                        borderRadius: BorderRadius.circular(12),
+                        child: Image.network(
+                          widget.data.ingredients3,
+                          height: 65,
+                          width: 85,
+                          fit: BoxFit.cover,
+                        )),
+                  ),
+                ),
+                Expanded(flex: 1,
+                  child: Padding(
+                    padding: const EdgeInsets.all(4),
+                    child: ClipRRect(
+                        borderRadius: BorderRadius.circular(12),
+                        child: Image.network(
+                          widget.data.ingredients4,
+                          height: 65,
+                          width: 85,
+                          fit: BoxFit.cover,
+                        )),
+                  ),
+                ),
+
+              ],
+            ),
+          );
+  }
+
+  Padding buildIngredients() {
+    return Padding(
+            padding: const EdgeInsets.only(left: 28, top: 16,bottom: 8),
             child: Row(
               children: [
                 Text(
-                  "About",
+                  "Ingredients",
+                  textAlign: TextAlign.start,
                   style: TextStyle(
                       color: Colors.black,
                       fontSize: 28,
@@ -30,11 +106,33 @@ class _DetailScreenState extends State<DetailScreen> {
                 ),
               ],
             ),
+          );
+  }
+
+  Padding buildAbout() {
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(20, 16, 20, 16),
+      child: Text(
+        widget.data.about,
+        style: TextStyle(
+            color: Colors.grey.shade500,
+            fontSize: 16,
+            fontWeight: FontWeight.w600),
+        textAlign: TextAlign.justify,
+      ),
+    );
+  }
+
+  Padding buildAboutHeading() {
+    return Padding(
+      padding: const EdgeInsets.only(left: 30, top: 8),
+      child: Row(
+        children: [
+          Text(
+            "About",
+            style: TextStyle(
+                color: Colors.black, fontSize: 28, fontWeight: FontWeight.w600),
           ),
-          Padding(
-            padding: const EdgeInsets.fromLTRB(20, 20, 20, 16),
-            child: Text(widget.data.about,style: TextStyle(color: Colors.grey.shade700,fontSize: 16),textAlign: TextAlign.justify,),
-          )
         ],
       ),
     );
