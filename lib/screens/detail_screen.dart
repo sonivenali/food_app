@@ -17,7 +17,24 @@ class _DetailScreenState extends State<DetailScreen> {
       body: Column(
         children: [
           buildTopSection(context),
-
+          Padding(
+            padding: const EdgeInsets.only(left: 40),
+            child: Row(
+              children: [
+                Text(
+                  "About",
+                  style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 28,
+                      fontWeight: FontWeight.w600),
+                ),
+              ],
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.fromLTRB(20, 20, 20, 16),
+            child: Text(widget.data.about,style: TextStyle(color: Colors.grey.shade700,fontSize: 16),textAlign: TextAlign.justify,),
+          )
         ],
       ),
     );
