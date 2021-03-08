@@ -2,7 +2,6 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:http/http.dart' as http;
 
 import 'home_screen.dart';
@@ -147,7 +146,7 @@ class _LoginScreenState extends State<LoginScreen> {
     if (response.statusCode == 200) {
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => HomeScreen(usernameController.text)),
+        MaterialPageRoute(builder: (context) => HomeScreen()),
       );
     }
     else{

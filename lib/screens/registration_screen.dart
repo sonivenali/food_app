@@ -260,7 +260,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
     if (response.statusCode == 201) {
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => HomeScreen("abc")),
+        MaterialPageRoute(builder: (context) => HomeScreen()),
       );
     } else {
       _scaffoldKey.currentState

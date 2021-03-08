@@ -1,23 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import 'home_screen_body.dart';
 
 class HomeScreen extends StatefulWidget {
-  final String
-      comingemail; // cating the vlaue that has been pass by login screen
-  const HomeScreen(
-      this.comingemail); //cating the vlaue that has been pass by login screen
 
   @override
-  _HomeScreenState createState() => _HomeScreenState(
-      this.comingemail); //cating the vlaue that has been pass by login screen
+  _HomeScreenState createState() => _HomeScreenState(); //cating the vlaue that has been pass by login screen
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  String comingemail; //cating the value that has been pass by login screen
-  _HomeScreenState(
-      this.comingemail); //cating the vlaue that has been pass by login screen
 
   @override
   Widget build(BuildContext context) {

@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:foodapp/models/home_data.dart';
+import 'package:foodapp/screens/detail_screen.dart';
 import 'package:foodapp/services/services.dart';
 
 class HomeBody extends StatefulWidget {
@@ -175,53 +176,61 @@ class _HomeBodyState extends State<HomeBody> {
             shrinkWrap: true,
             scrollDirection: Axis.horizontal,
             itemBuilder: (context, index) {
-              return Container(
-                width: 160,
-                padding: const EdgeInsets.all(8.0),
-                child: Stack(
-                  children: [
-                    Container(
-                      height: 250,
-                      child: ClipRRect(
-                          borderRadius: BorderRadius.circular(16),
-                          child: Image.network(
-                            data.recommended[index].image,
-                            fit: BoxFit.cover,
-                          )),
-                    ),
-                    ClipRRect(
-                      borderRadius: BorderRadius.circular(16),
-                      child: Container(
-                        color: Color.fromRGBO(0, 0, 0, 0.4),
+              return GestureDetector(onTap: (){
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => DetailScreen(data.recommended[index])),
+                );
+              },
+                child: Container(
+                  width: 160,
+                  padding: const EdgeInsets.all(8.0),
+                  child: Stack(
+                    children: [
+                      Container(
+                        height: 250,
+                        child: ClipRRect(
+                            borderRadius: BorderRadius.circular(16),
+                            child: Image.network(
+                              data.recommended[index].image,
+                              fit: BoxFit.cover,
+                            )),
                       ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 8, left: 8),
-                      child: Text(
-                        data.recommended[index].name,
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 18,
-                            fontWeight: FontWeight.w400),
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(16),
+                        child: Container(
+                          color: Color.fromRGBO(0, 0, 0, 0.4),
+                        ),
                       ),
-                    ),
-                    Positioned(
-                        bottom: 12,
-                        left: 12,
-                        child: Icon(
-                          Icons.favorite_border,
-                          color: Colors.white,
-                          size: 18,
-                        )),
-                    Positioned(
-                        bottom: 12,
-                        left: 34,
+                      Padding(
+                        padding: const EdgeInsets.only(top: 8, left: 8),
                         child: Text(
-                          data.recommended[index].rating,
-                          style: TextStyle(color: Colors.white),
-                        )),
-                    Positioned(bottom: 12,right:12,child: Icon(Icons.add_circle_outline,color: Colors.white,size: 18,))
-                  ],
+                          data.recommended[index].name,
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 18,
+                              fontWeight: FontWeight.w400),
+                        ),
+                      ),
+                      Positioned(
+                          bottom: 12,
+                          left: 12,
+                          child: Icon(
+                            Icons.favorite_border,
+                            color: Colors.white,
+                            size: 18,
+                          )),
+                      Positioned(
+                          bottom: 12,
+                          left: 34,
+                          child: Text(
+                            data.recommended[index].rating,
+                            style: TextStyle(color: Colors.white),
+                          )),
+                      Positioned(bottom: 12,right:12,child: Icon(Icons.add_circle_outline,color: Colors.white,size: 18,))
+                    ],
+                  ),
                 ),
               );
             },
