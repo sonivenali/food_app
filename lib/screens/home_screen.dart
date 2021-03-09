@@ -35,7 +35,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 child: CircleAvatar(
                   radius: 30.0,
                   backgroundImage: NetworkImage(
-                      "https://images.thequint.com/thequint%2F2019-12%2F51dd24d1-cf40-4e88-a372-9ec60b343ccf%2FUntitled_design__38_.jpg?rect=0%2C0%2C1920%2C1080&auto=format%2Ccompress&fmt=webp&w=480&dpr=2.6"),
+                      "https://socialanimal.com/blog/wp-content/uploads/2020/06/steak-1807532_1920.jpg"),
                   backgroundColor: Colors.transparent,
                 ),
               )
