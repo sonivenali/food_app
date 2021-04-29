@@ -17,6 +17,8 @@ class _HomeBodyState extends State<HomeBody> {
     return FutureBuilder<HomeData>(
         future: service.getFood(),
         builder: (context, snapshot) {
+
+
           if (snapshot.hasData) {
             return buildBody(snapshot.data);
           } else if (snapshot.hasError) {
@@ -28,6 +30,8 @@ class _HomeBodyState extends State<HomeBody> {
               child: CircularProgressIndicator(),
             );
           }
+
+
         });
   }
 

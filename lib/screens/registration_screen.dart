@@ -4,6 +4,7 @@ import 'dart:io';
 import 'package:camera/camera.dart';
 
 import 'package:flutter/material.dart';
+
 //import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:http/http.dart' as http;
 import 'package:image_picker/image_picker.dart';
@@ -50,29 +51,33 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                     child: CircleAvatar(
                       backgroundColor: Colors.grey,
                       radius: 50,
-                      backgroundImage: imageis?Image.file(
-                        _image,
-                        fit: BoxFit.cover,
-                      ).image:null,
+                      backgroundImage: imageis
+                          ? Image.file(
+                              _image,
+                              fit: BoxFit.cover,
+                            ).image
+                          : null,
                       child: Stack(
                         children: [
-                          imageis?Text(''):  Center(
-                            child: Icon(
-                              Icons.person,
-                              color: Colors.white,
-                              size: 50,
+                          imageis
+                              ? Text('')
+                              : Center(
+                                  child: Icon(
+                                    Icons.person,
+                                    color: Colors.white,
+                                    size: 50,
+                                  ),
+                                ),
+                          GestureDetector(
+                            onTap: _openCamera,
+                            child: Align(
+                              alignment: Alignment(0.8, 0.9),
+                              child: Icon(
+                                Icons.camera_enhance,
+                                color: Colors.white,
+                              ),
                             ),
-                          ),
-                      GestureDetector(
-                        onTap: _openCamera,
-                        child: Align(
-                          alignment: Alignment(0.8,0.9),
-                          child: Icon(
-                            Icons.camera_enhance,
-                            color: Colors.white,
-                          ),
-                        ),
-                      )
+                          )
                         ],
                       ),
                     ),
@@ -181,7 +186,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                       child: TextFormField(
                         controller: confirmpasswordController,
                         validator: (String text) {
-                          if (text.isEmpty ) {
+                          if (text.isEmpty) {
                             return "Email is INVALID";
                           } else {
                             return null;
@@ -268,14 +273,14 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
     }
   }
 
-  _openCamera() async{
+  _openCamera() async {
     print("clicked on open camera ");
     await getImage();
+  }
 
-    }
   Future getImage() async {
     final picker = ImagePicker();
-    try{
+    try {
       final pickedFile = await picker.getImage(source: ImageSource.gallery);
 
       setState(() {
@@ -287,8 +292,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
           print('No image selected.');
         }
       });
-    }
-    catch(exp){
+    } catch (exp) {
       print(exp);
     }
   }

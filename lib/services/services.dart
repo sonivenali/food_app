@@ -11,6 +11,7 @@ class Services{
       'https://api.mocki.io/v1/716a11a7',
     );
     final data = json.decode(response.body);
+    print(data);
     return HomeData.fromJson(data);
   }
 }
